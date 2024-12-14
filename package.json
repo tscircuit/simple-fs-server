@@ -1,7 +1,8 @@
 {
-  "name": "simple-fs-server",
+  "name": "@tscircuit/file-server",
   "main": "dist/bundle.js",
   "type": "module",
+  "version": "0.0.1",
   "bin": {
     "simple-fs-server": "./dist/cli.js"
   },

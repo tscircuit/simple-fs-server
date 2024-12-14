@@ -12,7 +12,8 @@ export default withRouteSpec({
     file: z.object({
       file_id: z.string(),
       file_path: z.string(),
-      text_content: z.string()
+      text_content: z.string(),
+      created_at: z.string()
     })
   }),
 })(async (req, ctx) => {

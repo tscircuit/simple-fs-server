@@ -13,7 +13,11 @@ const initializer = combine(databaseSchema.parse({}), (set, get) => ({
   upsertFile: (file: Omit<File, "file_id">) => {
     set((state) => {
       const existingFileIndex = state.files.findIndex(f => f.file_path === file.file_path)
-      const newFile = { ...file, file_id: existingFileIndex >= 0 ? state.files[existingFileIndex].file_id : state.idCounter.toString() }
+      const newFile = { 
+        ...file, 
+        file_id: existingFileIndex >= 0 ? state.files[existingFileIndex].file_id : state.idCounter.toString(),
+        created_at: existingFileIndex >= 0 ? state.files[existingFileIndex].created_at : new Date().toISOString()
+      }
       
       const files = existingFileIndex >= 0 
         ? state.files.map((f, i) => i === existingFileIndex ? newFile : f)

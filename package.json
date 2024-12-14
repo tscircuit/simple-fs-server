@@ -1,6 +1,6 @@
 {
   "name": "@tscircuit/file-server",
-  "main": "dist/bundle.js",
+  "main": "./dist/bundle.js",
   "type": "module",
   "version": "0.0.3",
   "bin": {

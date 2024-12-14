@@ -1,6 +1,6 @@
 {
-  "name": "debug-api",
-  "module": "index.ts",
+  "name": "simple-fs-server",
+  "main": "dist/bundle.js",
   "type": "module",
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
@@ -13,6 +13,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@whatwg-node/server": "^0.9.63",
     "winterspec": "^0.0.86",
     "zod": "^3.23.8",
     "zustand": "^4.5.5",

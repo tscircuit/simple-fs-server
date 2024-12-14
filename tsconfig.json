@@ -11,6 +11,9 @@
     "jsx": "preserve",
     "allowJs": true,
     "baseUrl": ".",
+    "paths": {
+      "lib/*": ["./lib/*"]
+    },
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -24,7 +27,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
-    "incremental": true,
     "esModuleInterop": true,
     "resolveJsonModule": true
   },

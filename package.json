@@ -2,18 +2,21 @@
   "name": "simple-fs-server",
   "main": "dist/bundle.js",
   "type": "module",
+  "bin": {
+    "simple-fs-server": "./dist/cli.js"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@types/bun": "latest",
     "@types/react": "18.3.4",
     "next": "^14.2.5",
-    "redaxios": "^0.5.1"
+    "redaxios": "^0.5.1",
+    "tsup": "^8.3.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@whatwg-node/server": "^0.9.63",
     "winterspec": "^0.0.86",
     "zod": "^3.23.8",
     "zustand": "^4.5.5",
@@ -21,8 +24,10 @@
   },
   "scripts": {
     "start": "bun run dev",
-    "dev": "winterspec dev",
-    "build": "winterspec bundle -o dist/bundle.js",
+    "dev": "winterspec dev -p 3062",
+    "build": "bun run build:bundle && bun run build:cli",
+    "build:bundle": "winterspec bundle -o dist/bundle.js",
+    "build:cli": "tsup cli.ts --format esm --dts",
     "next:dev": "next dev"
   }
 }

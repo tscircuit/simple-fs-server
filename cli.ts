@@ -1,20 +1,22 @@
-#!/usr/bin/env bun
-import { startServer } from "./tests/fixtures/start-server"
+#!/usr/bin/env node
+import { startServer } from "winterspec/adapters/node"
+import winterspecBundle from "./dist/bundle"
 
 const port = process.env.PORT ? Number.parseInt(process.env.PORT) : 3062
 
-console.log(`Starting server on port ${port}...`)
+async function main() {
+  const server = await startServer(winterspecBundle, {
+    port,
+  })
 
-const server = await startServer({
-  port,
-  testDbName: "production",
-})
+  console.log(`Server running at http://localhost:${port}`)
 
-console.log(`Server running at http://localhost:${port}`)
+  // Handle graceful shutdown
+  process.on("SIGINT", () => {
+    console.log("\nShutting down server...")
+    server.close()
+    process.exit(0)
+  })
+}
 
-// Handle graceful shutdown
-process.on("SIGINT", async () => {
-  console.log("\nShutting down server...")
-  await server.stop()
-  process.exit(0)
-})
+main().catch(console.error)

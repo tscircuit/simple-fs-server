@@ -19,6 +19,15 @@ This is a simple file server API, it has the following API:
 /events/list?since=... - List events since a given timestamp
 </pre>
 
+
+<h2>Admin Pages:</h2>
+<pre>
+<a href="/admin/files/list">Admin File List</a>
+<a href="/admin/files/create">Admin File Create</a>
+</pre>
+
+
+
 </body></html>`,
     {
       headers: {
